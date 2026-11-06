@@ -3,13 +3,16 @@ package no.hvl.dat100.oppgave1;
 import no.hvl.dat100.common.TODO;
 
 public abstract class Innlegg {
-
+	
 	private int id;
 	private String bruker;
 	private String dato;
 	private int likes;
-
-
+	
+	public Innlegg() {
+		
+	}
+	
 	public Innlegg(int id, String bruker, String dato) {
 
 		this.id = id;
@@ -25,58 +28,66 @@ public abstract class Innlegg {
 		this.dato = dato;
 		this.likes = likes;
 	}
-
+	
 	public String getBruker() {
-		return bruker;
+
+		return this.bruker;
 	}
 
 	public void setBruker(String bruker) {
+
 		this.bruker = bruker;
 	}
 
 	public String getDato() {
-		return dato;
+
+		return this.dato;
 	}
 
 	public void setDato(String dato) {
+		
 		this.dato = dato;
 	}
 
 	public int getId() {
-		return id;
+		
+		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setID(int id) {
+
 		this.id = id;
 	}
 
 	public int getLikes() {
-		return likes;
-	}
+		return this.likes;
 
+	}
+	
 	public void doLike () {
-		likes ++;
-	}
 
+		this.likes += 1;
+	}
+	
 	public boolean erLik(Innlegg innlegg) {
-
-		if (innlegg.getId() == this.getId()) {
-			return true;
-		} else {
-			return false;
+		boolean erlik = false;
+		if (this.id == innlegg.id) {
+			erlik = true;
 		}
+		return erlik;
 	}
-
+	
 	@Override
 	public String toString() {
-
-		return getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n";
+		
+		return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
+				
 	}
-
+	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-
+		
 		throw new UnsupportedOperationException(TODO.method());
-
+				
 	}
 }
